@@ -22,19 +22,21 @@ rootProject.allprojects {
 apply plugin: "com.android.library"
 
 android {
+    // keep original namespace so we don't fight Java packages
     if (project.android.hasProperty("namespace")) {
         namespace = "com.abdelaziz_mahdy.pytorch_lite"
     }
 
     compileSdk = 34
 
+    defaultConfig {
+        minSdk = 21
+        targetSdk = 34
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
-    }
-
-    defaultConfig {
-        minSdk = 21
     }
 
     testOptions {
@@ -48,20 +50,16 @@ android {
     }
 }
 
-/**
- * IMPORTANT:
- *  - Uses 16KB-aligned local AARs from libs/
- *  - No org.pytorch Maven artifacts here anymore
- */
 dependencies {
-    // 16 KB page-size–aligned AARs (put these files in android/libs/)
+    // ✅ use local 16 KB–aligned AARs instead of Maven
     implementation files("libs/pytorch_android-release.aar")
     implementation files("libs/pytorch_android_torchvision-release.aar")
 
-    // Required Java wrappers
+    // Needed Java-side helpers
     implementation "com.facebook.fbjni:fbjni-java-only:0.2.2"
     implementation "com.facebook.soloader:nativeloader:0.10.5"
 
+    // tests
     testImplementation "junit:junit:4.13.2"
     testImplementation "org.mockito:mockito-core:5.0.0"
 }
