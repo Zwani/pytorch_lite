@@ -37,22 +37,31 @@ android {
         minSdk = 21
     }
 
-    dependencies {
-        implementation 'org.pytorch:pytorch_android:2.1.0'
-        implementation 'org.pytorch:pytorch_android_torchvision:2.1.0'
-        implementation 'com.facebook.soloader:nativeloader:0.10.5'
-
-        testImplementation("junit:junit:4.13.2")
-        testImplementation("org.mockito:mockito-core:5.0.0")
-    }
-
     testOptions {
         unitTests.all {
             testLogging {
-               events "passed", "skipped", "failed", "standardOut", "standardError"
-               outputs.upToDateWhen {false}
-               showStandardStreams = true
+                events "passed", "skipped", "failed", "standardOut", "standardError"
+                outputs.upToDateWhen { false }
+                showStandardStreams = true
             }
         }
     }
+}
+
+/**
+ * IMPORTANT:
+ *  - Uses 16KB-aligned local AARs from libs/
+ *  - No org.pytorch Maven artifacts here anymore
+ */
+dependencies {
+    // 16 KB page-size–aligned AARs (put these files in android/libs/)
+    implementation files("libs/pytorch_android-release.aar")
+    implementation files("libs/pytorch_android_torchvision-release.aar")
+
+    // Required Java wrappers
+    implementation "com.facebook.fbjni:fbjni-java-only:0.2.2"
+    implementation "com.facebook.soloader:nativeloader:0.10.5"
+
+    testImplementation "junit:junit:4.13.2"
+    testImplementation "org.mockito:mockito-core:5.0.0"
 }
