@@ -50,6 +50,14 @@ android {
     }
 }
 
+configurations {
+    // Exclude Maven Central PyTorch artifacts to use local 16KB-aligned versions
+    all*.exclude group: 'org.pytorch', module: 'pytorch_android'
+    all*.exclude group: 'org.pytorch', module: 'pytorch_android_torchvision'
+    all*.exclude group: 'org.pytorch', module: 'pytorch_android_lite'
+    all*.exclude group: 'org.pytorch', module: 'pytorch_android_torchvision_lite'
+}
+
 dependencies {
     // ✅ use local 16 KB–aligned AARs instead of Maven
     implementation files("libs/pytorch_android-release.aar")
