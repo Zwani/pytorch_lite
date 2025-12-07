@@ -16,6 +16,9 @@ rootProject.allprojects {
     repositories {
         google()
         mavenCentral()
+        flatDir {
+            dirs project(':pytorch_lite').file('libs')
+        }
     }
 }
 
@@ -59,9 +62,9 @@ configurations {
 }
 
 dependencies {
-    // ✅ use local 16 KB–aligned AARs instead of Maven
-    implementation files("libs/pytorch_android-release.aar")
-    implementation files("libs/pytorch_android_torchvision-release.aar")
+    // ✅ use local 16 KB–aligned AARs from flatDir
+    implementation(name: 'pytorch_android-release', ext: 'aar')
+    implementation(name: 'pytorch_android_torchvision-release', ext: 'aar')
 
     // Needed Java-side helpers
     implementation "com.facebook.fbjni:fbjni-java-only:0.2.2"
