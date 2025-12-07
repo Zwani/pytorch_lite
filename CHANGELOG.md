@@ -1,3 +1,13 @@
+## 4.3.3 (16KB Alignment Support)
+
+- **CRITICAL**: Added 16KB page alignment support for Android 15+ (Google Play requirement from Nov 1, 2025)
+- Updated PyTorch Android .aar files to 16KB-aligned versions
+- Replaced Maven dependencies with local 16KB-aligned .aar files
+- Added required dependencies: fbjni-java-only:0.2.2 and nativeloader:0.10.5
+- Fixed: libpytorch_jni_lite.so, libfbjni.so, libc++_shared.so, libpytorch_vision_jni.so now support 16KB page sizes
+- Added verification script (verify_16kb_alignment.sh)
+- Updated documentation with integration guide
+
 ## 4.3.2
 
 - Add LabelsLocation enum and update labels loading methods

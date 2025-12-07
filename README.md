@@ -1,11 +1,17 @@
 # pytorch_lite
 
-### ⚠️ This package has been migrated to ExecutorTorch
+### ✅ Android 15+ / 16KB Page Alignment Support
 
-This package (pytorch_lite) is deprecated. Please use the new **executorch_flutter** package instead:
+**This fork includes 16KB page alignment support** required by Google Play for apps targeting Android 15+ (mandatory from Nov 1, 2025).
 
-- **GitHub**: https://github.com/abdelaziz-mahdy/executorch_flutter
-- **pub.dev**: https://pub.dev/packages/executorch_flutter
+See [16KB_ALIGNMENT_FIX.md](16KB_ALIGNMENT_FIX.md) for details.
+
+### ⚠️ Original Package Migration Notice
+
+The original pytorch_lite package has been migrated to ExecutorTorch. However, this fork maintains pytorch_lite with 16KB alignment support for existing projects.
+
+For new projects, consider:
+- **executorch_flutter**: https://github.com/abdelaziz-mahdy/executorch_flutter
 
 ---
 

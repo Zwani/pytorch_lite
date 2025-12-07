@@ -1,7 +1,7 @@
 name: pytorch_lite
-description: Flutter package to help run pytorch lite models classification and yolov5 and yolov8 
-version: 4.3.2
-homepage: https://github.com/abdelaziz-mahdy/pytorch_lite
+description: Flutter package to help run pytorch lite models classification and yolov5 and yolov8. Now with 16KB page alignment support for Android 15+.
+version: 4.3.3
+homepage: https://github.com/Zwani/pytorch_lite
 
 environment:
   sdk: ">=2.17.0 <4.0.0"
