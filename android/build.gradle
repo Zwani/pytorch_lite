@@ -62,7 +62,7 @@ configurations {
 }
 
 dependencies {
-    // ✅ use local 16 KB–aligned AARs from flatDir
+    // ✅ use local 16 KB–aligned AARs from flatDir// test
     implementation(name: 'pytorch_android-release', ext: 'aar')
     implementation(name: 'pytorch_android_torchvision-release', ext: 'aar')
 
